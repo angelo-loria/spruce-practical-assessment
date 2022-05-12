@@ -1,0 +1,20 @@
+{
+    "name": "spruce-practical-assessment",
+    "version": "0.1.0",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.17.10",
+        "@babel/preset-env": "^7.17.10",
+        "@babel/register": "^7.17.7",
+        "@wdio/cli": "^7.19.7",
+        "@wdio/local-runner": "^7.19.7",
+        "@wdio/mocha-framework": "^7.19.7",
+        "@wdio/spec-reporter": "^7.19.7",
+        "chromedriver": "^101.0.0",
+        "eslint": "^8.15.0",
+        "wdio-chromedriver-service": "^7.3.2"
+    },
+    "scripts": {
+        "wdio": "wdio run wdio.conf.js"
+    }
+}
