@@ -15,6 +15,6 @@
         "wdio-chromedriver-service": "^7.3.2"
     },
     "scripts": {
-        "wdio": "wdio run wdio.conf.js"
+        "wdio": "eslint && wdio run wdio.conf.js"
     }
 }
