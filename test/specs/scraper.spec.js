@@ -1,7 +1,8 @@
-import LoginPage from  '../pageobjects/login.page';
-import SecurePage from '../pageobjects/secure.page';
+import homePage from "../pageobjects/home.page";
 
 describe('product search and scrape', () => {
-    it('', async () => {
-    });
-});
+    it('searches for product', async () => {
+         await homePage.open()
+         await homePage.searchForItem('product')
+    })
+})
