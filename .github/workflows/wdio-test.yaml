@@ -6,11 +6,14 @@ jobs:
     steps:
         - uses: actions/checkout@v2
         - uses: actions/setup-node@v2
-        - uses: nanasess/setup-chromedriver@v1
-        # set up virtual display env for chromedriver to run in
-        - run: |
-            export DISPLAY=:99
-            chromedriver --url-base=/wd/hub &
-            sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional        
+
+        # install xvfb for chrome
+        # https://manpages.debian.org/testing/xvfb/Xvfb.1.en.html
+        - run: sudo apt-get install xvfb
+
+        # run npm install
         - run: npm install
-        - run: npm run wdio
+
+        # start virtual X server and runs npm test
+        # https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.html
+        - run: xvfb-run --auto-servernum npm run wdio
