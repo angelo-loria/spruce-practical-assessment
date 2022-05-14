@@ -12,7 +12,7 @@ class SearchResultsPage extends Page {
   }
 
   /**
-     * Gets name, price, and url attributes from product element
+     * Gets name, price, url attributes from product element and creates object
      * @param {Promise<WebdriverIO.Element>} productElement
      * @returns Object containing product name, price, and url
      */

@@ -7,10 +7,14 @@ export default class Page {
   get headerSearchInput () { return $('#search').$('input[name="substring"]') }
   get headerSearchButton () { return $('#search').$('button[type="submit"]') }
 
-  /**
-    * Opens a sub page of the page
-    * @param path path of the sub page (e.g. /path/to/page.html)
-    */
+  async appendFile (filePath, data = '') {
+    await fs.appendFile(filePath, data)
+  }
+
+  async fileExists (filePath) {
+    return (await fs.stat(filePath)).isFile()
+  }
+
   async open (path) {
     await browser.url(path)
   }
@@ -22,9 +26,5 @@ export default class Page {
   async searchForItem (keyword) {
     await this.headerSearchInput.setValue(keyword)
     await this.headerSearchButton.click()
-  }
-
-  async appendFile (filePath, data = '') {
-    await fs.appendFile(filePath, data)
   }
 }
