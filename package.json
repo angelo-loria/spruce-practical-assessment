@@ -11,11 +11,15 @@
         "@wdio/mocha-framework": "^7.19.7",
         "@wdio/spec-reporter": "^7.19.7",
         "chromedriver": "latest",
-        "eslint": "^8.15.0",
+        "standard": "^17.0.0",
         "wdio-chromedriver-service": "^7.3.2",
         "wdio-intercept-service": "^4.2.2"
     },
+    "standard": {
+        "env": [ "mocha" ],
+        "globals": [ "$", "$$", "browser", "expect" ]
+    },
     "scripts": {
-        "wdio": "eslint && wdio run wdio.conf.js"
+        "wdio": "standard && wdio run wdio.conf.js"
     }
 }

@@ -1,9 +1,9 @@
-import Page from "./page"
+import Page from './page'
 
 class HomePage extends Page {
-    async open () {
-        await super.open('/')
-    }
+  async open () {
+    await super.open('/')
+  }
 }
 
-export default new HomePage
+export default new HomePage()
