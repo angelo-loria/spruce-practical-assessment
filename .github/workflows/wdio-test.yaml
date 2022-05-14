@@ -15,7 +15,6 @@ jobs:
 
         # start virtual X server and runs npm test
         # https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.html
-        - name: execute tests
         - run: xvfb-run --auto-servernum npm run wdio
 
         - name: upload text file
