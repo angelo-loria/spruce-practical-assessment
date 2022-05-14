@@ -1,0 +1,24 @@
+name: wdio-test
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v2
+
+        # install xvfb for chrome
+        # https://manpages.debian.org/testing/xvfb/Xvfb.1.en.html
+        - run: sudo apt-get install xvfb
+
+        - run: npm install
+
+        # start virtual X server and runs npm test
+        # https://manpages.debian.org/testing/xvfb/xvfb-run.1.en.html
+        - run: xvfb-run --auto-servernum npm run wdio
+
+        - name: upload text file
+          uses: actions/upload-artifact@v2
+          with:
+            name: scraped-products
+            path: "productDetails_*.txt"        
