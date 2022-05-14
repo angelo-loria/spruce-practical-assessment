@@ -5,6 +5,7 @@ describe('product search and scrape', () => {
   it('searches for product', async () => {
     await homePage.open()
     await homePage.searchForItem('product')
+
     await expect(searchResultsPage.productGrid).toBeDisplayed()
   })
 
@@ -18,7 +19,10 @@ describe('product search and scrape', () => {
 
     const timestamp = new Date().toISOString().substring(0, 19).replace(/:/g, '')
     const filePath = `productDetails_${timestamp}.txt`
+
     console.log(`scraping ${numberOfProductsFound} products to ${filePath}`)
     await searchResultsPage.writeProductDetailsToFile(filePath)
+
+    expect(await searchResultsPage.fileExists(filePath)).toBe(true)
   })
 })
