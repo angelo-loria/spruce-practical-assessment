@@ -16,7 +16,8 @@ describe('product search and scrape', () => {
             await searchResultsPage.updateNumberOfProductsDisplayed(96)
         }
 
-        const filePath = `productDetails_${new Date().toISOString()}.txt`
+        const timestamp = new Date().toISOString().substring(0, 19).replace(/:/g,'')
+        const filePath = `productDetails_${timestamp}.txt`
         console.log(`scraping ${numberOfProductsFound} products to ${filePath}`)
         await searchResultsPage.writeProductDetailsToFile(filePath)
     })
