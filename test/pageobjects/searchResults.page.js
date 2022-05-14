@@ -1,11 +1,11 @@
 import Page from './page'
 
 class SearchResultsPage extends Page {
+  get bottomPager () { return $('.list-pager.list-pager-bottom') }
+  get nextPageButton () { return this.bottomPager.$$('a[title="Next page"]') }
   get numberOfProducts () { return $('.pager-items-range').$('.records-count') }
-  get perPageValue () { return $('.per-page-box').$('.per-page-value') }
-  get perPageValueList () { return $('.display-per-page.grid-list') }
-  get productGrid () { return $('.products-grid.grid-list') }
   get productElements () { return this.productGrid.$$('.product-cell.box-product') }
+  get productGrid () { return $('.products-grid.grid-list') }
 
   async open () {
     await super.open('/?target=search&mode=search&including=all')
@@ -30,14 +30,13 @@ class SearchResultsPage extends Page {
     return await this.numberOfProducts.getText()
   }
 
-  /**
-     * Updates number of products displayed on page, waits for update request to complete
-     * @param {number} numberOfProducts
-     */
-  async updateNumberOfProductsDisplayed (numberOfProducts) {
+  async isLastPage () {
+    return (await this.nextPageButton).length === 0
+  }
+
+  async openNextPage () {
     await browser.setupInterceptor()
-    await this.perPageValue.moveTo()
-    await this.perPageValueList.$(`li=${numberOfProducts}`).click()
+    await this.nextPageButton[0].click()
     await browser.waitUntil(async () =>
       await browser.hasPendingRequests() === false
     )
