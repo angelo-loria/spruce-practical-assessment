@@ -1,5 +1,6 @@
 # Spruce.co Practical Assessment
 [![wdio-test](https://github.com/angelo-loria/spruce-practical-assessment/actions/workflows/wdio-test.yaml/badge.svg)](https://github.com/angelo-loria/spruce-practical-assessment/actions/workflows/wdio-test.yaml)
+[![newman-test](https://github.com/angelo-loria/spruce-practical-assessment/actions/workflows/newman-test.yaml/badge.svg)](https://github.com/angelo-loria/spruce-practical-assessment/actions/workflows/newman-test.yaml)
 
 
 ### Project Structure
